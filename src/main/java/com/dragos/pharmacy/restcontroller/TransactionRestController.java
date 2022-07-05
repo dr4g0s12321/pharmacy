@@ -1,4 +1,4 @@
 package com.dragos.pharmacy.restcontroller;
 
-public class TransactionController {
+public class TransactionRestController {
 }

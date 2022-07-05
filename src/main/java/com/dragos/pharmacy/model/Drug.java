@@ -20,9 +20,6 @@ public class Drug {
     private Double price;
     @Column(name="DoctorPrescription", nullable = false)
     private Boolean prescription;
-    @ManyToOne
-    @JoinColumn(name="transaction_id", insertable = false, updatable = false)
-    private Transaction transactions;
 
     public Drug() {
     }
@@ -82,12 +79,4 @@ public class Drug {
         this.prescription = prescription;
     }
 
-
-    public Transaction getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(Transaction transactions) {
-        this.transactions = transactions;
-    }
 }

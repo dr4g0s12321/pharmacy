@@ -19,7 +19,8 @@ public class Transaction {
 //    @ManyToOne
 //    @JoinColumn(name="id", insertable = false, updatable = false)
 //    private Drug drug;
-    @OneToMany(mappedBy = "transactions")
+    @OneToMany
+    @JoinColumn(name = "drug_id")
     private Set<Drug> drugs;
 
     @Column(name="BuyUnits")

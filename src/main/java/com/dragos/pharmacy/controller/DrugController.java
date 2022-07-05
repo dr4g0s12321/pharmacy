@@ -1,18 +1,19 @@
-package com.dragos.pharmacy.restcontroller;
+package com.dragos.pharmacy.controller;
 
+import com.dragos.pharmacy.dto.DrugDTO;
 import com.dragos.pharmacy.exception.DrugNotFoundException;
 import com.dragos.pharmacy.exception.DrugUpdateInvalid;
 import com.dragos.pharmacy.model.Drug;
-import com.dragos.pharmacy.dto.DrugDTO;
 import com.dragos.pharmacy.service.DrugService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/drugs")
 public class DrugController {
     @Autowired

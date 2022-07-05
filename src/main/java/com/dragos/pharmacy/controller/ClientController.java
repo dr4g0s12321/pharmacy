@@ -1,16 +1,17 @@
-package com.dragos.pharmacy.restcontroller;
+package com.dragos.pharmacy.controller;
 
 import com.dragos.pharmacy.exception.ClientNotFoundException;
 import com.dragos.pharmacy.model.Client;
 import com.dragos.pharmacy.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/clients")
 public class ClientController {
     @Autowired
