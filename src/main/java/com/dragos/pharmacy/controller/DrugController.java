@@ -8,10 +8,10 @@ import com.dragos.pharmacy.service.DrugService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/drugs")
@@ -20,8 +20,10 @@ public class DrugController {
     private DrugService drugService;
 
     @GetMapping
-    public List<Drug> findAll() {
-        return drugService.findAll();
+    public String findAll(Model model) {
+        model.addAttribute("drugs", drugService.findAll());
+        model.addAttribute("drug", new Drug());
+        return "drug";
     }
 
     @GetMapping("/{id}")
@@ -39,8 +41,9 @@ public class DrugController {
     }
 
     @PostMapping
-    public Drug save(final @RequestBody Drug drug) {
-        return drugService.save(drug);
+    public String save(Drug drug, BindingResult result, Model model) {
+        drugService.save(drug);
+        return "redirect:/drugs";
     }
 
     @DeleteMapping("/{id}")
@@ -49,8 +52,9 @@ public class DrugController {
     }
 
     @PutMapping
-    public Drug update(final @RequestBody Drug drug) throws DrugNotFoundException{
-        return drugService.update(drug);
+    public String update(Drug drug, BindingResult result, Model model) throws DrugNotFoundException{
+        drugService.update(drug);
+        return "redirect:/drugs";
     }
 
     @PutMapping("/increase/{field}")

@@ -8,9 +8,9 @@ public class Drug {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
-    @Column(name="Supply", nullable = true)
+    @Column(name="Supply")
     private Integer supply;
-    @Column(name="UnitsSell", nullable = true)
+    @Column(name="UnitsSell")
     private Integer unitsSell;
     @Column(name="DrugName", nullable = false)
     private String name;
@@ -18,8 +18,8 @@ public class Drug {
     private String producer;
     @Column(name="Price", nullable = false)
     private Double price;
-    @Column(name="DoctorPrescription", nullable = false)
-    private Boolean prescription;
+    @Enumerated(EnumType.STRING)
+    private Prescription prescription;
 
     public Drug() {
     }
@@ -71,12 +71,11 @@ public class Drug {
         this.price = price;
     }
 
-    public Boolean getPrescription() {
+    public Prescription getPrescription() {
         return prescription;
     }
 
-    public void setPrescription(Boolean prescription) {
+    public void setPrescription(Prescription prescription) {
         this.prescription = prescription;
     }
-
 }

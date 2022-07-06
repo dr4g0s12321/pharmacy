@@ -16,9 +16,6 @@ public class Transaction {
     @JoinColumn(name="id", insertable = false, updatable = false)
     private Client client;
 
-//    @ManyToOne
-//    @JoinColumn(name="id", insertable = false, updatable = false)
-//    private Drug drug;
     @OneToMany
     @JoinColumn(name = "drug_id")
     private Set<Drug> drugs;

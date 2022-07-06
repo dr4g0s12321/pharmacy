@@ -6,6 +6,8 @@ import com.dragos.pharmacy.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,8 +20,10 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping
-    public List<Client> findAll() {
-        return clientService.findAll();
+    public String findAll(Model model) {
+        model.addAttribute("clients", clientService.findAll());
+        model.addAttribute("client", new Client());
+        return "client";
     }
 
     @GetMapping("/{id}")
@@ -37,8 +41,9 @@ public class ClientController {
     }
 
     @PostMapping
-    public Client save(final @RequestBody Client client) {
-        return clientService.save(client);
+    public String save(Client client, BindingResult result, Model model) {
+        clientService.save(client);
+        return "redirect:/clients";
     }
 
     @DeleteMapping("/{id}")
